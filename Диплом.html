@@ -1,0 +1,1011 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Электронный учебник: Квадратные уравнения</title>
+  <style>
+    :root {
+      --nav-width: 250px;
+      --header-height: 50px;
+      --footer-height: 50px;
+      --transition-speed: 0.3s;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf5e6;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      transition: margin-left var(--transition-speed);
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #eee;
+      padding: 5px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      height: var(--header-height);
+      flex-shrink: 0;
+      position: fixed;
+      z-index: 1001;
+      top: 0;
+      left: 0;
+      width: 100%;
+      }
+
+      #page-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: var(--footer-height);
+  margin: 0;
+}
+
+    #sidebarToggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1002;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+    nav {
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      height: calc(100vh - var(--header-height) - var(--footer-height));
+      width: var(--nav-width);
+      background-color: #ddd;
+      padding: 20px 10px;
+      overflow-y: auto;
+      transform: translateX(-100%);
+      transition: transform var(--transition-speed);
+      z-index: 100;
+    }
+
+    nav.open {
+      transform: translateX(0);
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav li {
+      margin: 10px 0;
+      position: relative;
+    }
+
+    nav button {
+      width: 100%;
+      background: #eee;
+      border: none;
+      padding: 10px;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      background: #ccc;
+    }
+
+    .submenu {
+      display: none;
+      margin-left: 15px;
+    }
+
+    .submenu.fixed {
+      display: block;
+    }
+
+    main 
+    {
+      margin: 20px;
+      padding-left: 0;
+      transition: margin-left var(--transition-speed);
+      flex-grow: 1;
+      padding-top: var(--footer-height);
+      padding-bottom: var(--footer-height);
+    }
+
+    .nav-open main 
+    {
+      margin-left: calc(var(--nav-width) + 40px);
+    }
+
+    footer 
+    {
+      background-color: #eee;
+      text-align: center;
+      padding: 10px;
+      height: var(--footer-height);
+      flex-shrink: 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1002;
+    }
+
+    footer a 
+    {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #0077cc;
+    }
+
+    footer a:hover 
+    {
+      text-decoration: underline;
+    }
+
+    .center-image 
+    {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    #main h2, #theory h2, #practice h2 
+    {
+      text-align: center;
+    }
+
+    #main p 
+    {
+      text-indent: 1.15em;
+      margin: 10px 0;
+    }
+
+    #theory a 
+    {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+      font-size: 18px;
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    #theory a:hover 
+    {
+      text-decoration: underline;
+    }
+
+    h2 
+    {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    h3 
+    {
+      color: #2c3e50;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+      margin: 15px 0 10px;
+    }
+
+    p 
+    {
+      margin: 8px 0;
+      line-height: 1.5;
+    }
+
+    .bold 
+    {
+       font-weight: bold; 
+    }
+
+    .underline 
+    {
+       text-decoration: underline; 
+    }
+
+    .center 
+    {
+       text-align: center; 
+     }
+
+    
+  </style>
+</head>
+<body>
+  <button id="sidebarToggle">
+    ☰
+  </button>
+
+  <header>
+    <h1 id="page-title">
+      Электронный учебник по теме: Решение квадратных уравнений
+    </h1>
+  </header>
+
+<nav id="sidebar">
+    
+  <ul>
+      <li><button onclick="showSection('main')">
+        Главная
+      </button></li>
+      
+    <li>
+      <button onclick="toggleSubmenu
+        ('contentSubmenu')">
+        Содержание
+      </button>
+        <ul id="contentSubmenu" class="submenu">
+          <li><button onclick="showSection('theory')">
+            Теория
+          </button></li>
+          
+      <li>
+      <button onclick="showSection('practice')">
+        Практика: Дискриминант
+      </button>
+      </li>
+          
+      <li>
+      <button onclick="showSection('practice1')">
+        Практика: Теорема Виета
+      </button>
+      </li>
+        </ul>
+    </li>
+  </ul>
+ </nav>
+
+  <main id="content">
+    <section id="main" class="active">
+      <h2>
+        Уважаемые восьмиклассники!
+      </h2>
+      
+      <p>
+        Данный электронный учебник позволит вам изучить один из важнейших разделов алгебры — <strong>квадратные уравнения</strong>.
+      </p>
+      
+      <p>
+        Учебник состоит из 2 частей: <strong>Теории и Практики.</strong>. 
+        Теория содержит в себе материалы по квадратным уравнениям, их видам и способам решения. 
+        Практика состоит из тестов. Таким образом вы сможете изучить теоретический материал 
+        с примерами заданий и их решением, а далее попробовать свои силы в тестовых заданиях. 
+      </p>
+       
+      <img src="Guy.gif" alt="Guy" class="center-image">
+    </section>
+
+    <section id="theory" style="display: none;">
+      
+      <h2>
+        Теория
+      </h2>
+      
+      <h2 style="text-align: center;"><strong><u>
+        Понятие квадратные уравнения, их виды и способы решения
+      </h2></u></strong>
+      
+      <p><strong>
+        Квадратным уравнением</strong> называют алгебраическое уравнение, имеющее вид: <strong>ax² + bx + c = 0</strong>, где <strong>a</strong>, <strong>b</strong> и <strong>c</strong> – действительные числа, причем <strong>a ≠ 0</strong>.</p>
+      <p><strong><u>
+        Коэффициенты a, b, c различают по названиям:
+      </u></strong></p>
+      
+      <p><strong>
+        a
+      </strong> - первый или старший коэффициент;</p>
+      
+      <p><strong>
+        b
+      </strong> - второй или коэффициент при х;</p>
+      
+      <p><strong>
+        c
+      </strong> - свободный член, свободен от переменной х.</p>
+      
+      <p>
+        Существует несколько <strong>видов</strong> квадратных уравнений.
+      </p>
+
+      <p><u>
+        Приведенное квадратное уравнение</u> - уравнение, где старший коэффициент равен 1:<br><strong>x² + 2x + 1 = 0   
+        </strong></p>
+      
+      <p><strong>
+          x² + bx + c = 0</strong> - стандартный вид приведенного квадратного уравнения
+      </p>
+
+      <p><u>
+        Неприведенное квадратное уравнение</u> - старший коэффициент отличен от 1:<br><strong>7x² + 4x + 1 = 0
+        </strong></p>
+
+      <p><u>
+        Полное квадратное уравнение</u> - это квадратное уравнение, в котором присутствуют все три слагаемых; иными словами, это уравнение, у которого коэффициенты <strong>b</strong> и <strong>c</strong> отличны от нуля:<br><strong>2x² - x + 1 = 0 
+        </strong></p>
+      
+      <p><u>
+          Неполное квадратное уравнение</u> - это уравнение, в котором присутствуют не все три слагаемых; иными словами, это уравнение, у которого хотя бы один из коэффициентов <strong>b</strong> и <strong>c</strong> равен нулю:
+        <br><strong><u>Примеры квадратных уравнений:
+      </u></strong></p>
+
+      <strong>
+  <p>
+    3x²+2x+5=0;
+  </p>
+  
+  <p>
+    x²+5x=0;
+  </p>
+  
+  <p>
+    2x²+9=0;
+  </p>
+  
+  <p>
+    x²+16=0;
+  </p>
+  
+  <p>
+    x²+3x+4=0
+  </p>
+  
+</strong>.</p>
+      
+<div style="text-align: center; margin: 30px 0;">
+  <video width="640" height="360" controls>
+    <source src="Дискриминант.mp4" type="video/mp4">
+  </video>
+  
+  <p>
+    <strong>
+      Дискриминант
+    </strong>
+</div>
+
+      <p>
+        Рассмотрим <strong>способы</strong> решения таких уравнений.
+      </p>
+      
+      <p>
+        Основным способом решения является нахождение корней <u>через дискриминант</u>:<br><strong>D = b² - 4ac</strong>
+      </p>
+      
+      <p>
+        Сами же <u>корни</u> находятся по формулам:
+      </p>
+      
+      <p>
+        Если <strong>D > 0</strong>, то уравнение имеет <u>2 корня</u>:<br><strong>x₁ = (-b + √D) / 2a</strong>     <strong>x₂ = (-b - √D) / 2a</strong>
+      </p>
+      
+      <p>
+        Если <strong>D = 0</strong>, то уравнение имеет <u>1 корень</u>:<br><strong>x = -b / 2a</strong>
+      </p>
+      
+      <p>
+        Если <strong>D < 0</strong>, то уравнение <u>не имеет корней</u>.
+      </p>
+
+      <h2 style="text-align: center;">
+        <strong><u>
+          Решение квадратного уравнения при <strong><u>чётном коэффициенте b </u></strong>.
+        </u></strong>
+      </h2>
+      
+      <p>
+        Если в квадратном уравнении <strong>x²>a+bx+c = 0 </strong> второй коэффициент <strong>b</strong> является <strong><u>чётным</u></strong>,
+        то решение этого уравнения можно немного упростить. Дискриминант для такого уравнения вычисляем по формуле:
+      </p>
+      
+      <p><strong>
+        D/4 = 
+        (b/2)² − a·c
+      </strong></p>
+      
+      <p>
+        а корни находим по формулам:
+      </p>
+      
+      <p><strong>
+        x₁ = (-(b/2)² + √(D/4)) / a
+      </strong></p>
+      
+      <p><strong>
+        x₂ = (-(b/2)² - √(D/4)) / a
+      </strong></p>
+    
+      <h2 style="text-align: center;"><strong><u>
+        Разложение левой части уравнения на множители.
+      </u></strong></h2>
+      
+      <p>
+        Решим уравнение <strong>
+          x² + 10x – 24 = 0
+        </strong>
+      </p>
+      
+      <p>
+        Разложим левую часть уравнения на множители:
+      </p>
+      
+      <p><strong>
+        x² + 10x – 24 = x² + 12x – 2x – 24 = x(x + 12) – 2(x + 12) = (x + 12)(x – 2)
+      </strong></p>
+      
+      <p>
+        Следовательно, уравнение можно переписать так:
+      </p>
+      
+      <p><strong>
+        (x + 12)(x – 2) = 0
+      </strong></p>
+      
+      <p>
+        Так как произведение равно нулю, то по крайней мере один из его множителей равен нулю. 
+        Поэтому левая часть уравнения обращается в нуль при <strong>x = 2</strong>, а также 
+        при <strong>x = -12</strong>. Это означает, что числа <strong>2</strong> и <strong>–12</strong> 
+        являются корнями уравнения 
+        <strong>
+          x² + 10x – 24 = 0
+        </strong>
+      </p>
+    
+      <h2 style="text-align: center;"><strong><u>
+        Метод выделения полного квадрата.
+      </u></strong></h2>
+      
+      <p>
+        Решим уравнение <strong>  x² + 6x – 7 = 0 </strong>
+      </p>
+      
+      <p>
+        Выделим в левой части полный квадрат. Для этого запишем выражение 
+        <strong>x² + 6x</strong> в следующем виде:
+      </p>
+      
+      <p><strong>
+        x² + 6x = x² + 2·x·3
+      </strong></p>
+      
+      <p>
+        В полученном выражении первое слагаемое – квадрат числа <strong>x</strong>, 
+        а второе – удвоенное произведение <strong>x</strong> на <strong>3</strong>. 
+        Поэтому чтобы получить полный квадрат, нужно прибавить <strong>3^2</strong>, так как:
+      </p>
+      
+      <p>
+        <strong>
+          x² + 2·x·3 + 3² = (x + 3)²
+        </strong>
+      </p>
+      
+      <p>
+        Преобразуем теперь левую часть уравнения <strong>
+          x² + 6x – 7 = 0
+        </strong>, прибавляя к ней и вычитая <strong>3^2</strong>. Имеем:
+      </p>
+      
+      <p><strong>
+        x² + 6x – 7 = x² + 2·x·3 + 3² – 3² – 7 = (x + 3)² – 9 – 7 = (x + 3)² – 16
+      </strong></p>
+      
+      <p>
+        Таким образом, данное уравнение можно записать так: <strong>
+          (x + 3)² – 16 = 0</strong>
+      </p>
+    
+      <h2 style="text-align: center;"><strong><u>
+        Решение уравнений <span style="text-decoration: none;">с использованием теоремы Виета</span>
+        для приведённого квадратного уравнения (прямой и обратной)</u></strong>
+      </h2>
+
+      <p><u>
+        Формула теоремы Виета для квадратного уравнения (прямая):
+      </u></p>
+      
+      <p>
+        <strong>Сумма корней</strong> квадратного уравнения <strong>ax² + bx + c = 0 </strong> равна 
+        <strong>
+          x₁ + x₂ = −b
+        </strong>,
+      </p>
+      
+      <p>
+        <strong>
+          x₁ × x₂ = c.
+        </strong>
+      </p>
+      
+      <p>
+        Если свободный член <strong>c</strong> приведенного уравнения положителен (<strong>c > 0</strong>), 
+        то уравнение имеет два одинаковых по знаку корня и это зависит от второго коэффициента <strong>b</strong>.
+        <br>
+        Если <strong>b > 0</strong>, то оба корня отрицательные, 
+        если <strong>b < 0</strong>, то оба корня положительны.
+      </p>
+  
+      <p>
+        Например:
+        <br>
+      <strong>
+        x² – 3x + 2 = 0; x₁ = 2, x₂ = 1
+      </strong>, так как <strong>c = 2 > 0, b = –3 <0
+        <br>
+      x² + 8x + 7 = 0; x₁ = –7, x₂ = –1
+      </strong>, так как <strong>c = 7 > 0</strong>, <strong>b = 8 > 0</strong>
+    </p>
+  
+      <p>
+        Если свободный член <strong>c</strong> отрицателен (<strong>c < 0</strong>), 
+        то уравнение имеет два различных по знаку корня, и больший по модулю будет положительным, 
+        если <strong>b < 0</strong>, или отрицательным, если <strong>b > 0</strong>.
+      </p>
+  
+      <p>
+        Например:
+        <br>
+      x² + 4x – 5 = 0; 
+      <strong>
+        x₁ = –5; x₂ = 1
+      </strong>, 
+      так как <strong>c = –5 < 0</strong>, <strong>b = 4 > 0</strong>
+      
+      <br>
+      
+      x² – 8x – 9 = 0; 
+      <strong>
+        x₁ = 9; x₂ = –1
+      </strong>, 
+      так как <strong>c = –9 < 0</strong>, <strong>b = –8 > 0</strong>
+    </p>
+  
+      <div style="text-align: center; margin: 30px 0;">
+        
+        <video width="640" height="360" controls>
+          <source src="Теорема Виета.mp4" type="video/mp4">
+        </video>
+        
+         <p>
+          <strong>Теорема Виета</strong>
+        </p>
+      </div>
+
+      <p><u>
+        Формула теоремы Виета для квадратного уравнения (обратная):
+      </u></p>
+      
+      <p>
+        Если числа <strong>x₁</strong> и <strong>x₂</strong> таковы, что 
+        <strong>x₁ + x₂ = –b</strong>, 
+        <strong>x₁ × x₂ = c</strong>, то они являются корнями квадратного уравнения 
+        <strong>x² + bx + c = 0</strong>.
+      </p>
+  
+      <p>
+        Решим уравнение 
+        <strong>
+          x² – 9x + 14 = 0
+        </strong>.
+        
+        <br>
+
+      Ищем <strong>x₁</strong> и <strong>x₂</strong>, такие, что 
+      <strong>x₁ + x₂ = 9</strong>, 
+      <strong>x₁ × x₂ = 14</strong> → 
+      <strong>x₁ = 2</strong>, <strong>x₂ = 7</strong>.
+       </p>
+  
+      <p>
+        Решим уравнение 
+        <strong>x² + 3x – 28 = 0</strong>.
+        
+        <br>
+
+      Ищем <strong>x₁</strong> и <strong>x₂</strong>, такие, что 
+      <strong>x₁ + x₂ = –3</strong>, 
+      <strong>x₁ × x₂ = –28</strong> 
+      → <strong>x₁ = –7</strong>, <strong>x₂ = 4</strong>.
+      </p>
+
+      <iframe 
+    src="Презентация по алгебре на тему _Квадратные уравнения. Основные понятия_ (8 класс).pdf" 
+    width="100%" 
+    height="600px" 
+    style="border: none;">
+    <a href="Презентация по алгебре на тему _Квадратные уравнения. Основные понятия_ (8 класс).pdf">Скачать PDF</a>
+  </iframe>
+  </main>
+
+    </section>
+   
+    <section id="practice" style="display: none;">
+      <h2>Практика: Дискриминант</h2>
+      <h3>Упражнения</h3>
+                    <form>
+                        <ol>
+                            <li>
+                                Вычислите дискриминант квадратного уравнения и укажите число его действительных корней 
+                                (
+                                  <a onClick="javascript:window.open('def4.html', '', config='width=400,height=200')">определение</a>
+                                ):
+                            </li>
+                            <ol type="a">
+                                <li>
+                                    x<sup>2</sup>&ndash;6x+5=0; 
+                                    
+                                    <br>
+                                    
+                                    <input type=radio name="q1" value="a" onClick="engineDiscriminant(1, this.value)">D=26; 
+                                    <input type=radio name="q1" value="b" onClick="engineDiscriminant(1, this.value)">D=16; 
+                                    <input type=radio name="q1" value="c" onClick="engineDiscriminant(1, this.value)">D=36; 
+                                    <input type=radio name="q1" value="d" onClick="engineDiscriminant(1, this.value)">D=0.
+                                   
+                                    <input type=radio name="q2" value="a" onClick="engineDiscriminant(2, this.value)">корней нет; 
+                                    <input type=radio name="q2" value="b" onClick="engineDiscriminant(2, this.value)">1 корень;
+                                    <input type=radio name="q2" value="c" onClick="engineDiscriminant(2, this.value)">2 корня.
+                                </li>
+                                
+                                <li>
+                                    x<sup>2</sup>+7x+16=0; 
+                                    
+                                    <br>
+                                    
+                                    <input type=radio name="q3" value="a" onClick="engineDiscriminant(3, this.value)">D=15; 
+                                    <input type=radio name="q3" value="b" onClick="engineDiscriminant(3, this.value)">D=16; 
+                                    <input type=radio name="q3" value="c" onClick="engineDiscriminant(3, this.value)">D=&ndash;16; 
+                                    <input type=radio name="q3" value="d" onClick="engineDiscriminant(3, this.value)">D=&ndash;15.
+                                    
+                                    <input type=radio name="q4" value="a" onClick="engineDiscriminant(4, this.value)">корней нет; 
+                                    <input type=radio name="q4" value="b" onClick="engineDiscriminant(4, this.value)">1 корень;
+                                    <input type=radio name="q4" value="c" onClick="engineDiscriminant(4, this.value)">2 корня.
+                                </li>
+                                
+                                <li>
+                                    9x<sup>2</sup>&ndash;x+1=0; 
+                                 
+                                    <br>
+                                 
+                                    <input type=radio name="q5" value="a" onClick="engineDiscriminant(5, this.value)">D=36; 
+                                    <input type=radio name="q5" value="b" onClick="engineDiscriminant(5, this.value)">D=0; 
+                                    <input type=radio name="q5" value="c" onClick="engineDiscriminant(5, this.value)">D=&ndash;35; 
+                                    <input type=radio name="q5" value="d" onClick="engineDiscriminant(5, this.value)">D=&ndash;26.
+                                    
+                                    <input type=radio name="q6" value="a" onClick="engineDiscriminant(6, this.value)">корней нет; 
+                                    <input type=radio name="q6" value="b" onClick="engineDiscriminant(6, this.value)">1 корень;
+                                    <input type=radio name="q6" value="c" onClick="engineDiscriminant(6, this.value)">2 корня.
+                                </li>
+                                
+                                <li>
+                                    4x<sup>2</sup>+4x+1=0; 
+                                
+                                    <br>
+                                
+                                    <input type=radio name="q7" value="a" onClick="engineDiscriminant(7, this.value)">D=0; 
+                                    <input type=radio name="q7" value="b" onClick="engineDiscriminant(7, this.value)">D=32; 
+                                    <input type=radio name="q7" value="c" onClick="engineDiscriminant(7, this.value)">D=16; 
+                                    <input type=radio name="q7" value="d" onClick="engineDiscriminant(7, this.value)">D=&ndash;16.
+                                    
+                                    <input type=radio name="q8" value="a" onClick="engineDiscriminant(8, this.value)">корней нет; 
+                                    <input type=radio name="q8" value="b" onClick="engineDiscriminant(8, this.value)">1 корень;
+                                    <input type=radio name="q8" value="c" onClick="engineDiscriminant(8, this.value)">2 корня.
+                                </li>
+                            </ol>
+
+                            <br>
+                            
+                            <li>
+                             
+                                Решите уравнения 
+                                (
+                                  <a onClick="javascript:window.open('def5.html', '', config='width=350,height=150')">формула корней</a>
+                                ):
+                            </li>
+                            
+                            <ol type="a">
+                                <li>
+                                    &ndash;
+                                    u<sup>2</sup>+4u+5=0; 
+                            
+                                    <br> 
+                            
+                                    <input type=radio name="q9" value="a" onClick="engineDiscriminant(9, this.value)">{&ndash;1; 5}; 
+                                    <input type=radio name="q9" value="b" onClick="engineDiscriminant(9, this.value)">{&ndash;3; 5}; 
+                                    <input type=radio name="q9" value="c" onClick="engineDiscriminant(9, this.value)">{0; 5}; 
+                                    <input type=radio name="q9" value="d" onClick="engineDiscriminant(9, this.value)">{4; 10}.
+                                </li>
+                            
+                                <li>
+                                    7x<sup>2</sup> &ndash;5x+6=0; 
+                            
+                                    <br> 
+                            
+                                    <input type=radio name="q10" value="a" onClick="engineDiscriminant(10, this.value)">{&ndash;4; 5}; 
+                                    <input type=radio name="q10" value="b" onClick="engineDiscriminant(10, this.value)">{5; 7}; 
+                                    <input type=radio name="q10" value="c" onClick="engineDiscriminant(10, this.value)">{-4; 6}; 
+                                    <input type=radio name="q10" value="d" onClick="engineDiscriminant(10, this.value)">&empty;.
+                                </li>
+                            
+                                <li>
+                                    (x &ndash;5)(x &ndash;2)=2x(x &ndash;8); 
+                            
+                                    <br>
+                            
+                                    <input type=radio name="q11" value="a" onClick="engineDiscriminant(11, this.value)">{0; 10}; 
+                                    <input type=radio name="q11" value="b" onClick="engineDiscriminant(11, this.value)">{&ndash;1; 10}; 
+                                    <input type=radio name="q11" value="c" onClick="engineDiscriminant(11, this.value)">{&ndash;10; 1}; 
+                                    <input type=radio name="q11" value="d" onClick="engineDiscriminant(11, this.value)">{1; 10}.
+                                </li>
+                            
+                                <li>
+                                    (x<sup>2</sup>&ndash;7x+6)(&ndash;2x<sup>2</sup>+x+15)=0; 
+                            
+                                    <br>
+                            
+                                    <input type=radio name="q12" value="a" onClick="engineDiscriminant(12, this.value)">{3; 5; 10; 12}; 
+                                    <input type=radio name="q12" value="b" onClick="engineDiscriminant(12, this.value)">{&ndash;5; &ndash;3; 0; 1};
+                                    <input type=radio name="q12" value="c" onClick="engineDiscriminant(12, this.value)">{&ndash;7; &ndash;3; 3; 6}; 
+                                    <input type=radio name="q12" value="d" onClick="engineDiscriminant(12, this.value)">{&ndash;2,5; 1; 3; 6}.
+                                </li>
+                            
+                                <li>
+                                    |x<sup>2</sup>&ndash;3x &ndash;6|=2x; 
+                            
+                                    <br>
+                            
+                                    <input type=radio name="q13" value="a" onClick="engineDiscriminant(13, this.value)">{0; 3}; 
+                                    <input type=radio name="q13" value="b" onClick="engineDiscriminant(13, this.value)">{3; 6}; 
+                                    <input type=radio name="q13" value="c" onClick="engineDiscriminant(13, this.value)">{&ndash;3; 6}; 
+                                    <input type=radio name="q13" value="d" onClick="engineDiscriminant(13, this.value)">&empty;.
+                                </li>
+                            </ol>
+                            
+                            <br>
+                            
+                            <li>
+                                При  каких значениях k уравнение 9х<sup>2</sup>&ndash;2x+k(x+1)=6 имеет равные корни? 
+                                
+                                <br>
+                                
+                                <input type=radio name="q14" value="a" onClick="engineDiscriminant(14, this.value)">
+                                k=20 
+                                &plusmn;6<img src="k5.gif" alt="sqrt(5)" width="24" height="24" align="middle"> 
+                                
+                                <input type=radio name="q14" value="b" onClick="engineDiscriminant(14, this.value)">
+                                k=6 
+                                &plusmn;20<img src="k5.gif" alt="sqrt(5)" width="24" height="24" align="middle">
+                                
+                                <input type=radio name="q14" value="c" onClick="engineDiscriminant(14, this.value)">
+                                k=26 и k=16; 
+                                
+                                <input type=radio name="q14" value="d" onClick="engineDiscriminant(14, this.value)">
+                                k=6, k=20.
+                            </li>
+                        </ol>
+
+                        <br>
+                        
+                        <button type="button" onClick="scoreDiscriminant()" style="background-color: #eeee;" id="scor">
+                            <img alt="Проверить" src="score.gif" width="80" height="45" vertical-align="middle">
+                        </button>
+                        
+                        &nbsp&nbsp&nbsp
+                        <textarea id="answerDiscriminant" rows="3" cols="38" disabled>
+                          После выполнения ВСЕХ упражнений нажмите на кнопку "Проверить""
+                        </textarea>
+                    <br>
+                    <br>
+                    <br>
+                        
+                      </form>
+    </section>
+
+
+    <section id="practice1" style="display: none;">
+      <h2>
+        Практика: Теорема Виета
+      </h2>
+      
+      <h3>
+        Упражнения
+      </h3>
+                    <form>
+                      <ol>
+                        <li>
+                          Найдите подбором корни уравнения 
+                          (
+                            <a href="#" onclick="window.open('def4.html', '', 'width=400,height=200'); return false;">теорема</a>, 
+                          )
+                        </li>
+                        <ol type="a">
+                          <li>
+                            x<sup>2</sup>&ndash;5x+6=0; 
+                            
+                            <br>
+
+                            <input type=radio name="q14" value="a" onClick="engineVieta(14, this.value)">{2; 3}; 
+                            <input type=radio name="q14" value="b" onClick="engineVieta(14, this.value)">{4; &ndash;5}; 
+                            <input type=radio name="q14" value="c" onClick="engineVieta(14, this.value)">{2; &ndash;5}; 
+                            <input type=radio name="q14" value="d" onClick="engineVieta(14, this.value)">{&ndash;3; &ndash;2}.
+                          </li>
+                          <li>
+                            
+                            x<sup>2</sup>&ndash;18x+77=0; 
+                            <br>
+                            <input type=radio name="q15" value="a" onClick="engineVieta(15, this.value)">{&ndash;11; 9}; 
+                            <input type=radio name="q15" value="b" onClick="engineVieta(15, this.value)">&empty;; 
+                            <input type=radio name="q15" value="c" onClick="engineVieta(15, this.value)">{7; 11}; 
+                            <input type=radio name="q15" value="d" onClick="engineVieta(15, this.value)">{&ndash;18; 77}.
+                          </li>
+                        </ol>
+                        <br>
+                        <li>
+                          
+                          Составьте квадратное уравнение, имеющее корнями числа 1,5 и 3. 
+                            <a onClick="javascript:window.open('def7.html', '', config='width=400,height=250')">обратная теорема</a>, 
+                        </li>
+                            <input type=radio name="q16" value="a" onClick="engineVieta(16, this.value)">
+                          x<sup>2</sup>+3x&ndash;3=0; 
+                            <input type=radio name="q16" value="b" onClick="engineVieta(16, this.value)">
+                          2x<sup>2</sup>+1,5x+3=0; 
+                            <input type=radio name="q16" value="c" onClick="engineVieta(16, this.value)">
+                          x<sup>2</sup>&ndash;3x+3=0; 
+                            <input type=radio name="q16" value="d" onClick="engineVieta(16, this.value)">
+                          2x<sup>2</sup>&ndash;9x+9=0;.
+                          <br><br>
+                        <li>
+                          
+                          В каждом уравнении найдите р или q, использовав дополнительные условия 
+                        </li>
+                        <ol type="a">
+                          <li>
+                            x<sup>2</sup>&ndash;5x+q=0, если x<sub>1</sub>=&ndash;3; 
+                            <br>
+                            <input type=radio name="q17" value="a" onClick="engineVieta(17, this.value)">q=6; 
+                            <input type=radio name="q17" value="b" onClick="engineVieta(17, this.value)">q=12; 
+                            <input type=radio name="q17" value="c" onClick="engineVieta(17, this.value)">q=&ndash;24; 
+                            <input type=radio name="q17" value="d" onClick="engineVieta(17, this.value)">q=&ndash;12;.
+                          </li>
+                          <li>
+                            x<sup>2</sup>+px+35=0, если x<sub>2</sub>=7; 
+                            <br>
+                            <input type=radio name="q18" value="a" onClick="engineVieta(5, this.value)">p=7; 
+                            <input type=radio name="q18" value="b" onClick="engineVieta(18, this.value)">p=&ndash;12; 
+                            <input type=radio name="q18" value="c" onClick="engineVieta(18, this.value)">p=35; 
+                            <input type=radio name="q18" value="d" onClick="engineVieta(18, this.value)">p=&ndash;7;.
+                          </li>
+                          <li>
+                            5x<sup>2</sup>&ndash;px+3=0, если x<sub>1</sub>=1; 
+                            <br>
+                            <input type=radio name="q19" value="a" onClick="engineVieta(19, this.value)">p=8; 
+                            <input type=radio name="q19" value="b" onClick="engineVieta(19, this.value)">p=0,6; 
+                            <input type=radio name="q19" value="c" onClick="engineVieta(19, this.value)">p=&ndash;3; 
+                            <input type=radio name="q19" value="d" onClick="engineVieta(19, this.value)">p=5;.
+                          </li>
+                      </ol>
+                      <br>
+                      <button type="button" onClick="scoreVieta()" style="background-color: #eeee;" id="scor">
+                        <img alt="Проверить" src="score1.gif" width="80" height="45" vertical-align="middle">
+                    </button>
+                    &nbsp&nbsp&nbsp<textarea id="answerVieta" rows="3" cols="38" disabled>После выполнения ВСЕХ упражнений нажмите на кнопку "Проверить""</textarea>
+     
+                      </form>
+    </section>
+
+    
+  <footer>
+    <p>© 2025 Электронный учебник. <a href="#">Политика конфиденциальности</a> | <a href="#">Авторские права</a></p>
+  </footer>
+
+  <script>
+    // ===== ОБЩИЕ ФУНКЦИИ =====
+    const toggleBtn = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const body = document.body;
+  
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      body.classList.toggle('nav-open');
+    });
+  
+    function showSection(id) {
+      document.querySelectorAll('main section').forEach(sec => sec.style.display = 'none');
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'block';
+    }
+  
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById(id);
+      submenu.classList.toggle('fixed');
+    }
+  
+    // ===== ПРАКТИКА: ДИСКРИМИНАНТ =====
+    const ansDiscriminant = [];
+    const yourAnsDiscriminant = [];
+    
+    // Правильные ответы для дискриминанта
+    ansDiscriminant[1] = "b";
+    ansDiscriminant[2] = "c";
+    ansDiscriminant[3] = "d";
+    ansDiscriminant[4] = "a";
+    ansDiscriminant[5] = "c";
+    ansDiscriminant[6] = "a";
+    ansDiscriminant[7] = "a";
+    ansDiscriminant[8] = "b";
+    ansDiscriminant[9] = "a";
+    ansDiscriminant[10] = "d";
+    ansDiscriminant[11] = "c";
+    ansDiscriminant[12] = "d";
+    ansDiscriminant[13] = "b";
+    ansDiscriminant[14] = "a";
+  
+    function engineDiscriminant(question, answer) {
+      console.log(`Question: ${question}, Answer: ${answer}`);
+    yourAnsDiscriminant[question] = answer;
+}
+  
+    function scoreDiscriminant() {
+      let score = 0;
+      for(let i = 1; i <= 14; i++) {
+        if(ansDiscriminant[i] === yourAnsDiscriminant[i]) {
+          score++;
+        }
+      }
+      
+      let answerText = `Количество очков: ${score}\n`;
+      if(score <= 3) answerText += "Плохо";
+      else if(score <= 7) answerText += "Средне";
+      else if(score <= 12) answerText += "Хорошо";
+      else answerText += "Отлично";
+      
+      document.getElementById('answerDiscriminant').value = answerText;
+    }
+  
+    // ===== ПРАКТИКА: ТЕОРЕМА ВИЕТА =====
+    const ansVieta = [];
+    const yourAnsVieta = [];
+    
+    // Правильные ответы для теоремы Виета
+    ansVieta[14] = "a";
+    ansVieta[15] = "c";
+    ansVieta[16] = "d";
+    ansVieta[17] = "c";
+    ansVieta[18] = "b";
+    ansVieta[19] = "a";
+  
+    function engineVieta(question, answer) {
+      yourAnsVieta[question] = answer;
+    }
+  
+    function scoreVieta() {
+      let score = 0;
+      // Проверяем вопросы с 14 по 19
+      for(let i = 14; i <= 19; i++) {
+        if(ansVieta[i] === yourAnsVieta[i]) {
+          score++;
+        }
+      }
+      
+      let answerText = `Количество очков: ${score}\n`;
+      if(score <= 1) answerText += "Плохо";
+      else if(score <= 3) answerText += "Средне";
+      else if(score <= 5) answerText += "Хорошо";
+      else answerText += "Отлично";
+      
+      document.getElementById('answerVieta').value = answerText;
+    }                
+  </script>
+</body>
+</html>
